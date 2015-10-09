@@ -6,7 +6,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,700,300,300italic);
 
 /* Variables */
-$img-url: '../img';
+$img-url: '../images';
 $base-color: #9a0b0f;
 $menu-bg-color: rgba(100, 11, 14, 0.7);
 $menu-link-color: #eeeeee;
@@ -49,7 +49,7 @@ html, body {
   z-index: 100;
   .header {
 
-    background: url('${img-url}/ornament.png') bottom right no-repeat;
+    background: url('#{$img-url}/ornament.png') bottom right no-repeat;
     background-size: 100% auto;
     background-color: $base-color;
 
@@ -244,7 +244,7 @@ html, body {
         padding-right: $block-margin;
         div.tile {
           div.overlay {
-            width: calc(100% - 2*$block-margin);
+            width: calc(100% - #{2*$block-margin});
           }
         }
       }
@@ -269,7 +269,7 @@ html, body {
         position: absolute;
         top: 5;
         left: 5;
-        width: calc(100% - $block-margin);
+        width: calc(100% - #{$block-margin});
         background: rgba(225, 225, 225, 0.8);
         div.tile-title {
           font-size: 2.5em;
