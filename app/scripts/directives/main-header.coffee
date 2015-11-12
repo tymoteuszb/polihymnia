@@ -36,7 +36,5 @@ angular.module('polihymniaApp').directive('mainHeader', ($window) ->
       )
       return
 
-    scope.barWidth = angular.element('div.menu')[0].offsetWidth - 16
-
     return
 )

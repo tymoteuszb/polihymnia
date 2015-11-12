@@ -126,6 +126,11 @@ html, body {
   right: 0;
   width: 100%;
   z-index: 100;
+
+  &.header-scrolled {
+    @include box-shadow(0px, 1px, 1px, rgba(0, 0, 0, 0.75));
+  }
+
   .header {
 
     background: url('#{$img-url}/ornament.png') bottom right no-repeat;
