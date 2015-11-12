@@ -11,12 +11,13 @@ $base-color: #9a0b0f;
 $menu-bg-color: rgba(100, 11, 14, 0.7);
 $menu-link-color: #eeeeee;
 $block-margin: 8px;
+$langs-list: 'pl', 'en', 'de', 'fr';
 
 /* Mixins */
 @mixin box-shadow($x: 0, $y: 0, $blur: 1px, $color: #000) {
-    -webkit-box-shadow: $x $y $blur $color;
-    -moz-box-shadow: $x $y $blur $color;
-    box-shadow: $x $y $blur $color;
+  -webkit-box-shadow: $x $y $blur $color;
+  -moz-box-shadow: $x $y $blur $color;
+  box-shadow: $x $y $blur $color;
 }
 
 @mixin smooth-animation($duration: 0.4s) {
@@ -33,6 +34,23 @@ $block-margin: 8px;
   -ms-filter: grayscale($percent);
 }
 
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+@mixin langs-loop() {
+  @each $lang in $langs-list {
+    &.flag-#{$lang} {
+      background: image-url('langs/#{$lang}.png') no-repeat;
+      background-size: 100%;
+    }
+  }
+}
+
 html, body {
   font-size: 7pt;
   @media (max-width: $screen-xs-max) {
@@ -41,9 +59,70 @@ html, body {
   font-family: 'Roboto', sans-serif;
 }
 
+.langs-menu {
+  height: 25px;
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  width: 80px;
+  line-height: 25px;
+  overflow: hidden;
+  @include smooth-animation();
+  background: #eeeeee;
+  @include box-shadow(3px, 3px, 3px, rgba(0, 0, 0, 0.35));
+  div.lang-entry {
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+    .flag {
+      @include img-responsive;
+      width: 50%;
+      height: 100%;
+      float: left;
+      opacity: .7;
+      @include langs-loop;
+    }
+    .desc {
+      float: left;
+      width: 50%;
+      height: 100%;
+      font-size: 1.3em;
+      font-weight: bold;
+      text-align: center;
+    }
+    &:after {
+      content: " ";
+      visibility: hidden;
+      display: block;
+      height: 0;
+      clear: both;
+    }
+    &:first-child {
+      .desc {
+        &:after {
+          content: " \25BC";
+        }
+      }
+    }
+    &:hover {
+      .flag {
+        opacity: 1;
+      }
+      border-color: #999;
+    }
+  }
+  &.active {
+    height: 100px;
+    .lang-entry:first-child {
+      .desc:after {
+        content: " \2713";
+      }
+    }
+  }
+}
+
 .fixed-bar {
   position: fixed;
-  top: 0px;
+  top: 0;
   right: 0;
   width: 100%;
   z-index: 100;
@@ -67,16 +146,42 @@ html, body {
     }
 
     .menu-row {
-      padding-top: 20px;
+      padding: 20px $block-margin 0px $block-margin;
+      &>div {
+        padding: 0;
+      }
+
+      .animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+        transition: all linear 0.5s;
+      }
+
+      .navbar-logo {
+        height: 50px;
+        width: auto;
+        @include smooth-animation();
+        opacity: 1;
+        padding: 10px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        &.ng-hide {
+          opacity: 0;
+        }
+      }
       .menu {
         height: 50px;
+        overflow: hidden;
         ul {
           height: 50px;
           background: $menu-bg-color;
           padding: 0;
-          float: right;
+          position: absolute;
+          top: 0;
           display: block;
-          margin-right: 130px;
+          @include smooth-animation();
+          &.right-side {
+            right: 0 !important;
+          }
           @media (min-width: $screen-sm-min) {
             display: inline-block;
           }
@@ -122,33 +227,7 @@ html, body {
         }
       }
     }
-
-    .langs-menu {
-      height: 25px;
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 80px;
-      line-height: 25px;
-      background: #eeeeee;
-      @include box-shadow(3px, 3px, 3px, rgba(0, 0, 0, 0.35));
-      .flag {
-        @include img-responsive;
-        width: 50%;
-        height: 100%;
-        float: left;
-      }
-      .desc {
-        float: left;
-        width: 50%;
-        height: 100%;
-        font-size: 1.3em;
-        font-weight: bold;
-        text-align: center;
-      }
-    }
   }
-
 }
 
 .main-container {
@@ -285,7 +364,7 @@ html, body {
             @include smooth-animation;
             color: #444444;
             line-height: 30px;
-            font-size: 30px;
+            font-size: 24px;
             padding: 8px;
             height: 100%;
             display: block;
@@ -305,7 +384,7 @@ html, body {
       }
 
       &.audio {
-        background: url('../img/audio-bg.png') #eeeeee;
+        background: url('#{$img-url}/audio-bg.png') #eeeeee;
         background-size: 100%;
         div.player {
           height: 3cm;

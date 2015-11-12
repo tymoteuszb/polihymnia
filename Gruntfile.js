@@ -22,7 +22,9 @@ module.exports = function (grunt) {
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
-    dist: 'dist'
+    dist: 'dist',
+    tmp: '.tmp',
+    scripts: ["scripts/**/*.js"]
   };
 
   // Define the configuration for all the tasks
@@ -30,6 +32,20 @@ module.exports = function (grunt) {
 
     // Project settings
     yeoman: appConfig,
+
+    includeSource: {
+      // Task to include files into index.html
+      options: {
+        basePath: '<%= yeoman.tmp %>',
+            baseUrl: '',
+            ordering: 'top-down'
+      },
+      app: {
+        files: {
+          '<%= yeoman.app %>/index.html': '<%= yeoman.app %>/index.html'
+          }
+        }
+    },
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -39,7 +55,14 @@ module.exports = function (grunt) {
       },
       coffee: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
-        tasks: ['coffee:compile']
+        tasks: ['clean:tmpScripts', 'coffee:compile']
+      },
+      includeSource: {
+        files: '<%= yeoman.tmp %>/scripts/**/*.js',
+        tasks: ['includeSource'],
+        options: {
+            event: ['added', 'deleted']
+        }
       },
       js: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
@@ -66,7 +89,7 @@ module.exports = function (grunt) {
         files: [
           '<%= yeoman.app %>/scripts/{,*/}*.html',
           '<%= yeoman.app %>/{,*/}*.html',
-          '.tmp/styles/{,*/}*.css',
+          '<%= yeoman.tmp %>/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
@@ -75,10 +98,13 @@ module.exports = function (grunt) {
     // Compile Coffeescript
     coffee: {
       compile: {
+        options: {
+          bare: true
+        },
         expand: true,
         cwd: "<%= yeoman.app %>/scripts/",
         src: ['**/*.coffee'],
-        dest: '<%= yeoman.app %>/scripts/',
+        dest: '<%= yeoman.tmp %>/scripts/',
         ext: '.js'
       }
     },
@@ -166,7 +192,8 @@ module.exports = function (grunt) {
           ]
         }]
       },
-      server: '.tmp'
+      server: '<%= yeoman.tmp %>',
+      tmpScripts: '<%= yeoman.tmp %>/scripts/**/*.js'
     },
 
     // Add vendor prefixed styles
@@ -368,7 +395,7 @@ module.exports = function (grunt) {
     ngtemplates: {
       dist: {
         options: {
-          module: 'polihymniaNewApp',
+          module: 'polihymniaApp',
           htmlmin: '<%= htmlmin.dist.options %>',
           usemin: 'scripts/scripts.js'
         },
@@ -466,6 +493,8 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
+      'coffee',
+      'includeSource',
       'concurrent:server',
       'autoprefixer:server',
       'connect:livereload',
@@ -490,6 +519,8 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'wiredep',
+    'coffee',
+    'includeSource',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
@@ -507,7 +538,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'newer:jshint',
-    'test',
     'build'
   ]);
 };

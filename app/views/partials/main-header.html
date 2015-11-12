@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <div class="langs-menu" ng-click="chooseLang=!chooseLang" ng-class="{'active': chooseLang}">
+    <div class="lang-entry" ng-repeat="lang in availableLangs | orderBy : '-active'" ng-click="chooseActive(lang)">
+      <div class="flag flag-{{ lang.code }}">&nbsp;</div>
+      <div class="desc">{{ lang.code | uppercase }}</div>
+    </div>
+  </div>
+  <!-- Header (logo, menu, langs) -->
+  <div class="row header">
+    <div class="col-lg-8 col-lg-offset-2">
+      <div class="row logo-row">
+        <!-- Logo -->
+        <div class="col-lg-12 logo">
+          <img src="images/logo.png" alt="logo" class="img-responsive">
+        </div>
+      </div>
+      <div class="row menu-row">
+        <div class="col-lg-12 menu">
+          <img src="images/logo.png" alt="logo" class="navbar-logo" ng-hide="headerScrolled < 120">
+          <nav>
+            <ul data-navbar-menu data-bar-width="{{ barWidth }}" ng-class="{'right-side': headerScrolled >= 120}"></ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

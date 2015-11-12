@@ -8,14 +8,15 @@ app = angular.module('polihymniaApp', [
     'ngSanitize',
     'ngTouch'
   ])
+
 app.config(($routeProvider) ->
-  $routeProvider.when('/', 
+  $routeProvider.when('/',
     templateUrl: 'views/main.html'
-    controller: 'MainCtrl',
+    controller: 'MainCtrl'
     controllerAs: 'main'
   ).when('/about', 
-    templateUrl: 'views/about.html',
-    controller: 'AboutCtrl',
+    templateUrl: 'views/about.html'
+    controller: 'AboutCtrl'
     controllerAs: 'about'
   ).otherwise(
     redirectTo: '/'

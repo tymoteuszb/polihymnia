@@ -19,103 +19,7 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div data-fixed-header></div>
-    <div class="container-fluid main-container">
-      <div class="row">
-        <div class="col-md-12 col-lg-8 col-lg-offset-2">
-          <!-- Links -->
-          <div class="row links">
-            <div class="col-xs-12 col-sm-12 col-lg-7 xs-left-padded sm-left-padded">
-              <div class="block join">
-                Dołącz do Poznańskiej Polihymnii!
-              </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-lg-2 xs-left-padded">
-              <div class="block facebook">
-                <img src="images/facebook.png" alt="facebook">
-                <div class="desc"><a href="#">Polihymnia<br>na Facebooku</a></div>
-              </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-lg-3">
-              <div class="block jroman">
-                <img src="images/jroman.png" alt="impresariat">
-                <div class="desc"><a href="#">Impresariat muzyczny<br>Jan Romanowski</a></div>
-              </div>
-            </div>
-          </div>
-          <!-- Tiles -->
-          <div class="row tiles">
-            <div class="col-xs-12 col-lg-6">
-              <div class="tile audio">
-                <div class="overlay">
-                  <div class="red-rect"></div>
-                  <div class="tile-title">
-                    Posłuchaj
-                  </div>
-                  <div class="tile-nav">
-                    <a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a>
-                    <a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a>
-                  </div>
-                </div>
-                <div class="player">
-                  <div class="play-btn">
-                    <span class="glyphicon glyphicon-play"></span>
-                  </div>
-                  <div class="song-desc">
-                    <span class="song-title">Requiem d-moll</span><br>
-                    <span class="song-composer">Wolfgang Amadeusz Mozart</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-12 col-lg-6">
-              <div class="tile gallery">
-                <div class="overlay">
-                  <div class="red-rect"></div>
-                  <div class="tile-title">
-                    Galeria
-                  </div>
-                  <div class="tile-nav">
-                    <a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a>
-                    <a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a>
-                  </div>
-                </div>
-                <img src="images/gallery/1.png" alt="Obrazek">
-              </div>
-            </div>
-          </div>
-          <!-- Content -->
-          <div class="row content">
-            <div class="col-lg-12">
-              <article>
-                <div class="article-title">
-                  <div class="ptr">&nbsp;</div>
-                  <h1>Co nowego?</h1>
-                </div>
-                <div class="article-content">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div data-ng-view></div>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -131,8 +35,15 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <!-- include: "type": "js", "files": "<%= yeoman.scripts %>" -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/directives/main-container.js"></script>
+    <script src="scripts/directives/main-header.js"></script>
+    <script src="scripts/directives/navbar-menu.js"></script>
+    <!-- /include -->
+    <!-- endbuild -->
+
 </body>
 </html>
