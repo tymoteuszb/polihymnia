@@ -1,0 +1,127 @@
+.tiles {
+
+  &>div {
+    padding: $block-margin 0 0 $block-margin;
+    &:last-child {
+      padding-right: $block-margin;
+      div.tile {
+        div.overlay {
+          width: calc(100% - #{2*$block-margin});
+        }
+      }
+    }
+    &.sm-left-padded {
+      @media (min-width: $screen-xs-max) and (max-width: $screen-sm-max) {
+        padding-right: $block-margin;
+      }
+    }
+    &.xs-left-padded {
+      @media (max-width: $screen-xs-max) {
+        padding-right: $block-margin;
+      }
+    }
+  }
+
+  div.tile {
+
+    height: 42vh;
+    overflow: hidden;
+
+    div.overlay {
+      height: 46px;
+      position: absolute;
+      top: 5;
+      left: 5;
+      width: calc(100% - #{$block-margin});
+      background: rgba(225, 225, 225, 0.8);
+      div.tile-title {
+        font-size: 2.5em;
+        text-transform: uppercase;
+        line-height: 46px;
+        float: left;
+      }
+
+      div.tile-nav {
+        color: #222222;
+        height: 100%;
+        float: right;
+        a {
+          @include smooth-animation;
+          color: #444444;
+          line-height: 30px;
+          font-size: 24px;
+          padding: 8px;
+          height: 100%;
+          display: block;
+          float: left;
+        }
+        a:hover {
+          color: #eeeeee;
+          background-color: #444444;
+        }
+      }
+
+    }
+
+    &.gallery {
+      img {
+        @include img-responsive;
+      }
+    }
+
+    &.audio {
+      background: image-url('audio-bg.png') #eeeeee;
+      background-size: 100%;
+      div.player {
+        height: 3cm;
+        margin-top: calc(20vh - 1.5cm);
+        width: 100%;
+        text-align: center;
+        div.play-btn {
+          @include smooth-animation;
+          display: inline-block;
+          height: 3cm;
+          width: 3cm;
+          border-radius: 3cm;
+          background: #222222;
+          font-size: 2cm;
+          line-height: 2cm;
+          color: #cccccc;
+          text-align: center;
+          padding: 0.5cm;
+          span.glyphicon {
+            margin: 0 0 2px 3px;
+          }
+          cursor: pointer;
+        }
+
+        div.play-btn:hover {
+          background: #444444;
+          color: #eeeeee;
+        }
+
+        div.song-desc {
+          display: inline-block;
+          height: 3cm;
+          padding: 0.7cm;
+          line-height: 0.8cm;
+          vertical-align: top;
+          
+          span {
+            float: left;
+          }
+
+          span.song-title {
+            font-weight: bold;
+            font-size: 2.5em;
+          }
+
+          span.song-composer {
+            font-size: 1.5em;
+            text-transform: uppercase;
+          }
+        }
+      }
+    }
+  }
+}

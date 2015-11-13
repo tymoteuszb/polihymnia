@@ -1,0 +1,11 @@
+{
+  "MENU": {
+    "NEWS": "News",
+    "HISTORY": "History",
+    "CONDUCTOR": "Conductor",
+    "CONTACT": "Contact",
+    "OFFER": "Offer",
+    "GALLERY": "Gallery",
+    "LISTEN": "Listen"
+  }
+}

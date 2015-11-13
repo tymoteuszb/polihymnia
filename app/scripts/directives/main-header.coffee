@@ -1,9 +1,8 @@
 'use strict';
 
 angular.module('polihymniaApp').directive('mainHeader', ($window, $translate) ->
-  restrict: 'EA'
-  transclude: true
-  templateUrl: 'views/partials/main-header.html'
+  restrict: 'A'
+  templateUrl: 'views/directives/main-header.html'
   link: (scope, element) ->
 
     element.css(
