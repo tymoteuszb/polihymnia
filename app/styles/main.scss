@@ -176,56 +176,61 @@ html, body {
       .menu {
         height: 50px;
         overflow: hidden;
-        ul {
-          height: 50px;
-          background: $menu-bg-color;
-          padding: 0;
-          position: absolute;
-          top: 0;
+        nav {
+          min-width: 100%;
+          float: right;
           display: block;
-          @include smooth-animation();
+          height: 100%;
+          text-align: center;
+          @include smooth-animation(0.7s);
           &.right-side {
-            right: 0 !important;
+            min-width: 50%;
           }
-          @media (min-width: $screen-sm-min) {
-            display: inline-block;
-          }
-          li {
-            // Inline if not a smartphone
+          ul {
+            height: 50px;
+            background: $menu-bg-color;
+            padding: 0;
+            display: block;
             @media (min-width: $screen-sm-min) {
               display: inline-block;
             }
-            list-style-type: none;
-            padding: 0;
-            height: 50px;
+            li {
+              // Inline if not a smartphone
+              @media (min-width: $screen-sm-min) {
+                display: inline-block;
+              }
+              list-style-type: none;
+              padding: 0;
+              height: 50px;
 
-            a {
-              color: $menu-link-color;
-              text-transform: uppercase;
-              font-size: 1.6em;
-              padding: 0 0.5em;
-              @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) and (orientation : portrait) {
-                font-size: 1.4em;
-              }
-              @media (max-width: $screen-xs-max) and (orientation : landscape) {
-                padding: 0.5em;
-              }
-              line-height: 50px;
-              text-decoration: none;
-              display: block;
-              width: 100%;
-              height: 100%;
-              &:first-child {
-              padding-left: 1em;
-              }
-              &:last-child {
-                padding-right: 1em;
-              }
+              a {
+                color: $menu-link-color;
+                text-transform: uppercase;
+                font-size: 1.6em;
+                padding: 0 0.5em;
+                @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) and (orientation : portrait) {
+                  font-size: 1.4em;
+                }
+                @media (max-width: $screen-xs-max) and (orientation : landscape) {
+                  padding: 0.5em;
+                }
+                line-height: 50px;
+                text-decoration: none;
+                display: block;
+                width: 100%;
+                height: 100%;
+                &:first-child {
+                padding-left: 1em;
+                }
+                &:last-child {
+                  padding-right: 1em;
+                }
 
-              &:hover {
-                @include smooth-animation;
-                background: #eeeeee;
-                color: #222222;
+                &:hover {
+                  @include smooth-animation;
+                  background: #eeeeee;
+                  color: #222222;
+                }
               }
             }
           }

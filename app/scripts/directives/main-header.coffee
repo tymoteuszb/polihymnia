@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('polihymniaApp').directive('mainHeader', ($window) ->
+angular.module('polihymniaApp').directive('mainHeader', ($window, $translate) ->
   restrict: 'EA'
   transclude: true
   templateUrl: 'views/partials/main-header.html'
@@ -29,7 +29,8 @@ angular.module('polihymniaApp').directive('mainHeader', ($window) ->
       return
     )
 
-    scope.chooseActive = (lang) ->
+    scope.chooseActiveLang = (lang) ->
+      $translate.use lang.code
       scope.availableLangs.forEach((elem) ->
         elem.active = if elem is lang then true else false
         return

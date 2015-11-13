@@ -6,7 +6,8 @@ app = angular.module('polihymniaApp', [
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'pascalprecht.translate'
   ])
 
 app.config(($routeProvider) ->
