@@ -5,44 +5,56 @@
       <div class="row links" data-links></div>
       <!-- Tiles -->
       <div class="row tiles">
-        <div class="col-xs-12 col-lg-6">
-          <div class="tile audio">
+        <div class="col-xs-12 col-lg-6" data-audio-tile>
+          <div class="tile audio" ng-style="{'background-position-x': -audioSliderIndex*20+'px'}">
             <div class="overlay">
               <div class="red-rect"></div>
               <div class="tile-title">
                 Posłuchaj
               </div>
               <div class="tile-nav">
-                <a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a>
-                <a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a href="" ng-click="audioSliderIndex=audioSliderIndex-1"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                <a href="" ng-click="audioSliderIndex=audioSliderIndex+1"><span class="glyphicon glyphicon-chevron-right"></span></a>
               </div>
             </div>
-            <div class="player">
-              <div class="play-btn">
-                <span class="glyphicon glyphicon-play"></span>
-              </div>
-              <div class="song-desc">
-                <span class="song-title">Requiem d-moll</span><br>
-                <span class="song-composer">Wolfgang Amadeusz Mozart</span>
-              </div>
-            </div>
+            <ul rn-carousel rn-carousel-duration="600" rn-carousel-easing="easeInOutQuad" rn-carousel-index="audioSliderIndex"> {{ carouselBufferIndex }}
+              <li carousel-moving-bg>
+                <div class="player">
+                  <div class="play-btn">
+                    <span class="glyphicon glyphicon-play"></span>
+                  </div>
+                  <div class="song-desc">
+                    <span class="song-title">Requiem d-moll</span><br>
+                    <span class="song-composer">Wolfgang Amadeusz Mozart</span>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="player">
+                  <div class="play-btn">
+                    <span class="glyphicon glyphicon-play"></span>
+                  </div>
+                  <div class="song-desc">
+                    <span class="song-title">Requiem d-moll</span><br>
+                    <span class="song-composer">Wolfgang Amadeusz Mozart</span>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="player">
+                  <div class="play-btn">
+                    <span class="glyphicon glyphicon-play"></span>
+                  </div>
+                  <div class="song-desc">
+                    <span class="song-title">Requiem d-moll</span><br>
+                    <span class="song-composer">Wolfgang Amadeusz Mozart</span>
+                  </div>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
-        <div class="col-xs-12 col-lg-6">
-          <div class="tile gallery">
-            <div class="overlay">
-              <div class="red-rect"></div>
-              <div class="tile-title">
-                Galeria
-              </div>
-              <div class="tile-nav">
-                <a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a>
-                <a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a>
-              </div>
-            </div>
-            <img src="images/gallery/1.png" alt="Obrazek">
-          </div>
-        </div>
+        <div class="col-xs-12 col-lg-6" data-gallery-tile></div>
       </div>
       <!-- Content -->
       <div class="row content">

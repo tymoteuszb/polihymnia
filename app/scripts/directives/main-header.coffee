@@ -36,5 +36,9 @@ angular.module('polihymniaApp').directive('mainHeader', ($window, $translate) ->
       )
       return
 
+    scope.$on('elements:blur', () ->
+      scope.chooseLang = false
+    )
+
     return
 )

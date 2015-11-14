@@ -1,0 +1,17 @@
+<div class="tile gallery">
+  <div class="overlay">
+    <div class="red-rect"></div>
+    <div class="tile-title">
+      Galeria
+    </div>
+    <div class="tile-nav">
+      <a href="" ng-click="goPrev()" ng-class="{'disabled': sliderIndex==0}"><span class="glyphicon glyphicon-chevron-left"></span></a>
+      <a href="" ng-click="goNext()" ng-class="{'disabled': sliderIndex==galleryImages.length-1}"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div>
+  </div>
+  <ul rn-carousel rn-carousel-duration="600" rn-carousel-easing="easeInOutQuad" rn-carousel-controls-allow-loop rn-carousel-index="sliderIndex" class="image">
+    <li ng-repeat="image in galleryImages">
+      <div class="slider-img" ng-style="{'background-image': 'url(images/gallery/' + image.url + ')'}" alt="Obrazek"></div>
+    </li>
+  </ul>
+</div>

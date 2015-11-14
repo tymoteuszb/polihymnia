@@ -27,6 +27,10 @@
     height: 42vh;
     overflow: hidden;
 
+    ul {
+      height: 100%;
+    }
+
     div.overlay {
       height: 46px;
       position: absolute;
@@ -34,6 +38,7 @@
       left: 5;
       width: calc(100% - #{$block-margin});
       background: rgba(225, 225, 225, 0.8);
+      z-index: 1000;
       div.tile-title {
         font-size: 2.5em;
         text-transform: uppercase;
@@ -54,6 +59,11 @@
           height: 100%;
           display: block;
           float: left;
+          &.disabled {
+            cursor: default;
+            color: #aaa !important;
+            background-color: transparent !important;
+          }
         }
         a:hover {
           color: #eeeeee;
@@ -64,14 +74,18 @@
     }
 
     &.gallery {
-      img {
+      div.slider-img {
         @include img-responsive;
+        height: 100%;
+        background-size: 100% auto;
       }
     }
 
     &.audio {
       background: image-url('audio-bg.png') #eeeeee;
-      background-size: 100%;
+      background-repeat: no-repeat;
+      background-size: 120% auto;
+      @include smooth-animation;
       div.player {
         height: 3cm;
         margin-top: calc(20vh - 1.5cm);

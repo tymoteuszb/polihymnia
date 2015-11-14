@@ -11,7 +11,8 @@
   @include box-shadow(3px, 3px, 3px, rgba(0, 0, 0, 0.35));
 
   div.lang-entry {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #ddd;
+    box-sizing: content-box;
     cursor: pointer;
 
     .flag {
@@ -52,13 +53,13 @@
       .flag {
         opacity: 1;
       }
-      border-color: #999;
+      border-color: #aaa;
     }
 
   }
 
   &.active {
-    height: 100px;
+    height: 102px;
     .lang-entry:first-child {
       .desc:after {
         content: " \2713";

@@ -7,7 +7,8 @@ app = angular.module('polihymniaApp', [
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'pascalprecht.translate'
+    'pascalprecht.translate',
+    'angular-carousel'
   ])
 
 app.config(($routeProvider) ->
@@ -15,10 +16,6 @@ app.config(($routeProvider) ->
     templateUrl: 'views/main.html'
     controller: 'MainCtrl'
     controllerAs: 'main'
-  ).when('/about', 
-    templateUrl: 'views/about.html'
-    controller: 'AboutCtrl'
-    controllerAs: 'about'
   ).otherwise(
     redirectTo: '/'
   );
