@@ -2,23 +2,24 @@
 
 angular.module('polihymniaApp').directive('audioTile', ($interval) ->
   restrict: 'A'
-  templateUrl: 'views/directives/gallery-tile.html'
+  templateUrl: 'views/directives/audio-tile.html'
+  scope: true
   link: (scope, element) ->
 
     scope.audioFiles = [
       {
         url: '1.mp3'
-        name: 'Requiem d-moll'
+        title: 'Requiem d-moll'
         composer: 'Wolfgang Amadeusz Mozart'
       }
       {
         url: '1.mp3'
-        name: 'Requiem d-moll'
+        title: 'Requiem d-moll'
         composer: 'Wolfgang Amadeusz Mozart'
       }
       {
         url: '1.mp3'
-        name: 'Requiem d-moll'
+        title: 'Requiem d-moll'
         composer: 'Wolfgang Amadeusz Mozart'
       }
     ]

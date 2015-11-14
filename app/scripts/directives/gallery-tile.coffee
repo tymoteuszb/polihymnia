@@ -3,6 +3,7 @@
 angular.module('polihymniaApp').directive('galleryTile', ($interval) ->
   restrict: 'A'
   templateUrl: 'views/directives/gallery-tile.html'
+  scope: true
   link: (scope, element) ->
 
     scope.galleryImages = [

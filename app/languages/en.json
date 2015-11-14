@@ -7,5 +7,9 @@
     "OFFER": "Offer",
     "GALLERY": "Gallery",
     "LISTEN": "Listen"
+  },
+  "TILES": {
+  	"GALLERY": "Gallery",
+  	"AUDIO": "Listen"
   }
 }
