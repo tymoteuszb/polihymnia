@@ -16,6 +16,12 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import 'directives/links';
 @import 'directives/tiles';
 
+.no-hover {
+  a:hover {
+    background: initial !important;
+    color: inherit !important;
+  }
+}
 
 .main-container {
   z-index: 10;

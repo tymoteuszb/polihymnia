@@ -91,34 +91,34 @@
         margin-top: calc(20vh - 1.5cm);
         width: 100%;
         text-align: center;
-        div.play-btn {
-          @include smooth-animation;
-          display: inline-block;
-          height: 3cm;
-          width: 3cm;
-          border-radius: 3cm;
-          background: #222222;
-          font-size: 2cm;
-          line-height: 2cm;
-          color: #cccccc;
-          text-align: center;
-          padding: 0.5cm;
-          span.glyphicon {
-            margin: 0 0 2px 3px;
-          }
-          cursor: pointer;
-        }
 
-        div.play-btn:hover {
-          background: #444444;
-          color: #eeeeee;
+        a {
+          display: inline-block;
+          width: 115px;
+          height: 115px;
+          opacity: 0.9;
+          span {
+            &.play {
+              background: image-url('icons/play.svg') center center no-repeat;
+            }
+            &.pause {
+              background: image-url('icons/pause.svg') center center no-repeat;
+            }
+            display: inline-block;
+            width: 115px;
+            height: 115px;
+            background-size: 95% !important;
+          }
+          &:hover {
+            opacity: 1;
+          }
         }
 
         div.song-desc {
           display: inline-block;
-          height: 3cm;
-          padding: 0.7cm;
-          line-height: 0.8cm;
+          height: 115px;
+          padding: 25px;
+          line-height: 33px;
           vertical-align: top;
           
           span {
@@ -136,6 +136,47 @@
           }
         }
       }
+
+      .player-track {
+
+        position: absolute;
+        bottom: -50px;
+        display: block;
+        text-align: center;
+        width: 100%;
+        @include smooth-animation;
+
+        &.active {
+          bottom: 30px;
+        }
+
+        .track {
+          width: 60%;
+          background-color: #222;
+          height: 10px;
+          display: inline-block;
+          margin: 0 auto;
+          box-sizing: content-box;
+          border-radius: 2px;
+          @include box-shadow(1px, 1px, 1px, rgba(0,0,0,0.3));
+        }
+
+        .loaded {
+          height: 100%;
+          background-color: $base-color;
+          border-radius: 2px;
+        }
+
+        .label {
+          font-size: 1.5em;
+          font-weight: bold;
+          display: inline-block;
+          color: #222;
+          text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+        }
+
+      }
+
     }
   }
 }

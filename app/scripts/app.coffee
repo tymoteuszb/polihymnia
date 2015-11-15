@@ -1,14 +1,15 @@
 'use strict';
 
 app = angular.module('polihymniaApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch',
-    'pascalprecht.translate',
+    'ngAnimate'
+    'ngCookies'
+    'ngResource'
+    'ngRoute'
+    'ngSanitize'
+    'ngTouch'
+    'pascalprecht.translate'
     'angular-carousel'
+    'angularSoundManager'
   ])
 
 app.config(($routeProvider) ->

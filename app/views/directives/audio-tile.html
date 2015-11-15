@@ -5,21 +5,29 @@
       {{ 'TILES.AUDIO' | translate }}
     </div>
     <div class="tile-nav">
-      <a href="" ng-click="goPrev()" ng-class="{'disabled': sliderIndex==0}"><span class="glyphicon glyphicon-chevron-left"></span></a>
-      <a href="" ng-click="goNext()" ng-class="{'disabled': sliderIndex==audioFiles.length-1}"><span class="glyphicon glyphicon-chevron-right"></span></a>
+      <a href="" ng-click="goPrev();" ng-class="{'disabled': sliderIndex==0}"><span class="glyphicon glyphicon-chevron-left"></span></a>
+      <a href="" ng-click="goNext();" ng-class="{'disabled': sliderIndex==playlist.length-1}"><span class="glyphicon glyphicon-chevron-right"></span></a>
     </div>
   </div>
-  <ul rn-carousel rn-carousel-duration="600" rn-carousel-easing="easeInOutQuad" rn-carousel-index="sliderIndex"> {{ carouselBufferIndex }}
-    <li ng-repeat="song in audioFiles">
+  <ul rn-carousel rn-carousel-duration="600" rn-carousel-easing="easeInOutQuad" rn-carousel-index="sliderIndex">
+    <li ng-repeat="song in playlist">
       <div class="player">
-        <div class="play-btn">
-          <span class="glyphicon glyphicon-play"></span>
-        </div>
+        <a href="" ng-click="playPause()">
+          <span ng-class="{'play': !isPlaying, 'pause': isPlaying}"></span>
+        </a>
         <div class="song-desc">
           <span class="song-title">{{ song.title }}</span><br>
-          <span class="song-composer">{{ song.composer }}</span>
+          <span class="song-composer">{{ song.artist }}</span>
         </div>
       </div>
     </li>
   </ul>
+  <div class="player-track" ng-class="{'active': currentDuration != '00:00'}">
+    <div class="track" seek-track>
+      <div class="loaded" ng-style="{ width : (progress + '%') }"></div>
+    </div>
+    <div class="label">
+      {{ currentPostion }} / {{ currentDuration }}
+    </div>
+  </div>
 </div>
